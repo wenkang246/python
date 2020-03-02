@@ -1,0 +1,47 @@
+#1.  Try the code below and revise it to current time.
+#While trying the coed provided I found that I had to mess with the indenting and add ()
+#to the print function in order to get it to work correctly, however I found it to be finicky
+#so decided to use a different option
+import sys
+import datetime
+
+data = datetime.datetime.now().time()
+print("current time:")
+print(data)
+print("")
+
+#2.  Add the timedelta to the datetime and subtract 60 seconds and add 2 years
+from datetime import timedelta
+from datetime import datetime
+print("Add 2 years and subtract 60 seconds:")
+print(datetime.now() - timedelta(seconds=60) + timedelta(days=730))
+print("")
+
+#3. Create a timedelta object representing 100 days, 10 hours, and 13 minutes.
+d = timedelta(days = 100, hours = 10, minutes = 13)
+(d.days, d.seconds, d.microseconds)
+(-1, 86399, 999999)
+print("Object representing 100 days, 10 hours, and 13 minutes:")
+print(d)
+print("")
+
+# 4. Write a function that takes two arguments (feet and inches) with this time object
+# I'm not quite sure what was actually being asked here
+# So I just created a function that takes inches and feet and somehow uses the time object
+# My function calculates how long it would take the average human to walk a given distance and
+# then gives an estimate of when they would finish that walk by using the time object
+# it's admittedly a bit crude but I think it's acceptable for what I'm trying to demonstrate
+def distance():
+    print("Input your distance:")
+    ft = int(input("Feet: "))
+    inch = int(input("Inches: "))
+    inch += ft*12
+    miles = inch/63360
+    #avg walking pace is 3.1 mph
+    time_h = round(miles/3.1, 2)
+    print("It'll take the average human " + str(time_h) + " hour(s) to walk that distance.")
+
+    time2 = datetime.now() + timedelta(hours=time_h)
+    print("If you leave now, you'll get there at " + str(time2))
+
+distance()
